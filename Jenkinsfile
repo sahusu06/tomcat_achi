@@ -12,7 +12,10 @@ pipeline
     {
       steps 
       {
-        sh 'docker build -t sumitsscet/simple-webapp:latest .'
+        dir('/var/lib/docker/volumes/tomcat/_data/')
+        {
+          sh 'docker build -t sumitsscet/simple-webapp:latest .'
+        }
       }
     }
     stage('Login') 
