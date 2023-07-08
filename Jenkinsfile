@@ -1,29 +1,34 @@
-pipeline {
-  agent { label:'Deploy_Server'}
+pipeline 
+{
+  agent { label 'Deploy_Server'}
   
-  environment {
+  environment 
+  {
     DOCKERHUB_CREDENTIALS = credentials('DockerHub')
   }
-  stages {
-    stage('Build') {
-      steps {
+  stages 
+  {
+    stage('Build') 
+    {
+      steps 
+      {
         sh 'docker build -t sumitsscet/simple-webapp:latest .'
       }
     }
-    stage('Login') {
-      steps {
+    stage('Login') 
+    {
+      steps 
+      {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     }
-    stage('Push') {
-      steps {
+    stage('Push') 
+    {
+      steps 
+      {
         sh 'docker push sumitsscet/simple-webapp:latest'
       }
     }
   }
-  post {
-    always {
-      sh 'docker logout'
-    }
-  }
+
 }
