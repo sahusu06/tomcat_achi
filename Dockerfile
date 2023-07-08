@@ -3,7 +3,7 @@ FROM tomcat:latest
 
 # Copy the WAR file to the webapps directory
 # WORKDIR /var/lib/docker/volumes/tomcat/_data/
-COPY pom.xml /usr/local/tomcat/webapps/
+COPY pom.xm /usr/local/tomcat/webapps/
 
 # Expose the default Tomcat port
 EXPOSE 8080
